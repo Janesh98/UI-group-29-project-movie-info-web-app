@@ -7,7 +7,7 @@ function listen() {
 }
 
 function gotSpeech() {
-  console.log(speechRec.resultString);
+  search(speechRec.resultString);
 }
 
 $( "#voiceSearch" ).click(function() {
