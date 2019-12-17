@@ -61,6 +61,7 @@ function movie_onClick(id) {
                 <li class="list-group-item"><strong>Release Date:</strong> ${movie.release_date}</li>
                 <li class="list-group-item"><strong>Runtime:</strong> ${movie.runtime}</li>
                 <li class="list-group-item"><strong>Budget:</strong> ${movie.budget}</li>
+                <li class="list-group-item"><strong>Revenue:</strong> ${movie.revenue}</li>
 		<a href="index.html"
 		<button type "button" class= "btn btn-primary" button style = "color:white;background-color:aqua">Back</button>
 
