@@ -39,3 +39,18 @@ form {
 h2 {
     color: white;
 }
+
+#SearchButton, #oiceSearch {
+    color: black;
+    background-color: white;
+}
+
+#searchButton:hover {
+    background-color: rgb (23, 201, 23);
+}    
+
+#voiceSearch:hover {
+    color: white;
+    background-color: black;
+}
+}
