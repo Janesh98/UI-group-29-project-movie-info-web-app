@@ -33,14 +33,14 @@ function get_movies(url) {
 }
 
 function movie_onClick(id) {
-    console.log(id);
+    //console.log(id);
 
     axios.get("https://api.themoviedb.org/3/movie/"
             + id
             + "?api_key=49c34f6afc0f7fbb3c17e344b1abb335&language=en-US")
     .then((response) => {
         let movie = response.data
-        console.log(movie);
+        //console.log(movie);
         let poster = "https://image.tmdb.org/t/p/w500/";
         let output = `
         <div class="col-md-4">
@@ -62,16 +62,19 @@ function movie_onClick(id) {
                 <li class="list-group-item"><strong>Runtime:</strong> ${movie.runtime} minutes </li>
                 <li class="list-group-item"><strong>Budget:</strong> $ ${movie.budget}</li>
                 <li class="list-group-item"><strong>Revenue:</strong> $ ${movie.revenue}</li>
-		<a href="index.html"
-		<button type "button" class= "btn btn-primary" button style = "color:white;background-color:aqua">Back</button>
-
-		</a>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/FU-9kt-qi1g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <a href="index.html"
+                <button type "button" class= "btn btn-primary" button style = "color:white;background-color:aqua">Back</button>
+                </a>
+                
+                <div id="trailer" class="row" style="width:100%";>
+                </div>
 
             </ul>
         </div>
         `;
         $('#movies').html(output);
+        get_youtubeTrailer(movie.id);
     })
 
     .catch((err) => {
@@ -79,3 +82,25 @@ function movie_onClick(id) {
     });
 }
 
+function get_youtubeTrailer(id) {
+    //console.log(id);
+    let url = "https://api.themoviedb.org/3/movie/"
+        + id
+        + "/videos?api_key=49c34f6afc0f7fbb3c17e344b1abb335&language=en-US";
+
+    axios.get(url)
+    .then((response) => {
+        //console.log(response);
+        let trailer_id = response.data.results[0].key;
+        //console.log(trailer_id);
+        output = `
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${trailer_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        `;
+        $('#trailer').html(output);
+
+    })
+
+    .catch((err) => {
+        console.log(err);
+    });
+}
