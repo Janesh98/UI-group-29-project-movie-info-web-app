@@ -40,7 +40,7 @@ h2 {
     color: white;
 }
 
-#SearchButton, #oiceSearch {
+#searchButton, #voiceSearch {
     color: black;
     background-color: white;
 }
@@ -52,5 +52,4 @@ h2 {
 #voiceSearch:hover {
     color: white;
     background-color: black;
-}
 }
