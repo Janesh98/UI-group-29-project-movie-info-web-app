@@ -62,6 +62,7 @@ function movie_onClick(id) {
                 <li class="list-group-item"><strong>Runtime:</strong> ${movie.runtime} minutes </li>
                 <li class="list-group-item"><strong>Budget:</strong> $ ${movie.budget}</li>
                 <li class="list-group-item"><strong>Revenue:</strong> $ ${movie.revenue}</li>
+                <li id="actors" class="list-group-item"><strong>Actors:</strong></li>
                 
                 <a href="index.html"
                 <button type "button" class= "btn btn-primary" button style = "color:white;background-color:aqua">Back</button>
@@ -75,6 +76,7 @@ function movie_onClick(id) {
         `;
         $('#movies').html(output);
         get_youtubeTrailer(movie.id);
+        get_actors(movie.id);
     })
 
     .catch((err) => {
@@ -98,6 +100,35 @@ function get_youtubeTrailer(id) {
         `;
         $('#trailer').html(output);
 
+    })
+
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
+function get_actors(id) {
+    //console.log(id);
+    let url = "https://api.themoviedb.org/3/movie/"
+            + id
+            + "/credits?api_key=49c34f6afc0f7fbb3c17e344b1abb335";
+
+    axios.get(url)
+    .then((response) => {
+        let actors = response.data.cast;
+        console.log(actors);
+        let start = `<li class="list-group-item"><strong>Actors:</strong> `;
+        let names = "";
+        let end = "</li>";
+
+        for (var i=0; i < 10; i++) {        // only show 10 actos names
+            names += actors[i].name + " ( " + actors[i].character + " ) " + ", ";
+        }
+
+        names = names.slice(0,-3) + '.'    // replace last character of string with full stop
+
+        output = start + names + end;
+        $('#actors').html(output);
     })
 
     .catch((err) => {
