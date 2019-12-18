@@ -18,7 +18,8 @@ function get_movies(url) {
             <img
               src="${poster}${movie.poster_path}"
               class="card-img-top" style="height: 25rem;
-              alt="${movie.title} Movie Poster"
+              alt="${movie.title} Movie Poster image"
+              aria-label="${movie.title}"
             />
             </a>
           </div>`;
