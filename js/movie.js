@@ -41,7 +41,7 @@ function movie_onClick(id) {
             + "?api_key=49c34f6afc0f7fbb3c17e344b1abb335&language=en-US")
     .then((response) => {
         let movie = response.data
-        //console.log(movie);
+        console.log(movie);
         let poster = "https://image.tmdb.org/t/p/w500/";
         let output = `
         <div class="col-md-4">
@@ -66,7 +66,7 @@ function movie_onClick(id) {
                 <li id="actors" class="list-group-item"><strong>Actors:</strong></li>
                 
                 <a href="index.html"
-                <button type "button" class= "btn btn-primary" button style = "color:white;background-color:aqua">Back</button>
+                <button type "button" class= "btn btn-primary" style="color: #FFFFFF;">Back</button>
                 </a>
                 
                 <div id="trailer" class="row" style="width:100%";>
