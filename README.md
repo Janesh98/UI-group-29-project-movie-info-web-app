@@ -1,7 +1,7 @@
 # How to run:
 
 
-## The website is live at https://paulmcn98.github.io/
+## The website is live at https://janesh98.github.io/UI-group-29-project-movie-info-web-app/
 
 ### Additionaly you can run a local server
 
